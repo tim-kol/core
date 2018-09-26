@@ -25,7 +25,8 @@ namespace OC\Core\Command\User;
 
 use OC\AppFramework\Http;
 use OC\Files\Filesystem;
-use OC\User\Service\SigninWithEmail;
+use OC\User\Service\CreateUser;
+use OC\User\User;
 use OCP\IGroupManager;
 use OCP\IUser;
 use OCP\IUserManager;
@@ -47,8 +48,8 @@ class Add extends Command {
 	/** @var IMailer  */
 	protected $mailer;
 
-	/** @var SigninWithEmail  */
-	protected $signinWithEmail;
+	/** @var CreateUser  */
+	protected $createUser;
 
 	/**
 	 * Add User constructor.
@@ -56,15 +57,15 @@ class Add extends Command {
 	 * @param IUserManager $userManager
 	 * @param IGroupManager $groupManager
 	 * @param IMailer $mailer
-	 * @param SigninWithEmail $signinWithEmail
+	 * @param CreateUser $signinWithEmail
 	 */
 	public function __construct(IUserManager $userManager, IGroupManager $groupManager,
-								IMailer $mailer, SigninWithEmail $signinWithEmail) {
+								IMailer $mailer, CreateUser $createUser) {
 		parent::__construct();
 		$this->userManager = $userManager;
 		$this->groupManager = $groupManager;
 		$this->mailer = $mailer;
-		$this->signinWithEmail = $signinWithEmail;
+		$this->createUser = $createUser;
 	}
 
 	protected function configure() {
@@ -202,9 +203,9 @@ class Add extends Command {
 			$this->createUser($input, $output, $password, $email);
 			$this->addUserToGroup($input, $output, $this->userManager->get($uid));
 		} elseif ($input->getOption('email') && ($email !== null)) {
-			$response = $this->signinWithEmail->create($uid, '', $input->getOption('group'), $email);
-			if ($response->getStatus() === Http::STATUS_CREATED) {
-				$output->writeln('<info>The user "' . $response->getData()['name'] . '" was created successfully</info>');
+			$newUser = $this->createUser->createUser($uid, '', $input->getOption('group'), $email);
+			if ($newUser instanceof User) {
+				$output->writeln('<info>The user "' . $newUser->getUID() . '" was created successfully</info>');
 			}
 			if ($input->getOption('display-name')) {
 				$user = $this->userManager->get($uid);

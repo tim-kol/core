@@ -138,11 +138,16 @@ if (\OC::$server->getConfig()->getSystemValue('installed', false)) {
 		\OC::$server->getEventDispatcher()));
 
 	$application->add(new OC\Core\Command\User\Add(\OC::$server->getUserManager(), \OC::$server->getGroupManager(), \OC::$server->getMailer(),
-		new \OC\User\Service\SigninWithEmail(
-			\OC::$server->getUserSession(), \OC::$server->getGroupManager(), \OC::$server->getURLGenerator(),
-			\OC::$server->getUserManager(), \OC::$server->getSecureRandom(), new \OC_Defaults(), \OC::$server->getTimeFactory(),
-			\OC::$server->getMailer(), \OC::$server->getL10N('settings'), \OC::$server->getLogger(), \OC::$server->getConfig(),
-			\OC::$server->getAppManager(), \OC::$server->getAvatarManager(), \OC::$server->getEventDispatcher()
+		new \OC\User\Service\CreateUser(
+			\OC::$server->getUserSession(), \OC::$server->getGroupManager(),
+			\OC::$server->getUserManager(), \OC::$server->getMailer(),
+			\OC::$server->getSecureRandom(), \OC::$server->getEventDispatcher(),
+			\OC::$server->getLogger(),
+			new \OC\User\Service\UserSendMail(
+				\OC::$server->getSecureRandom(),\OC::$server->getConfig(),
+				\OC::$server->getMailer(), \OC::$server->getURLGenerator(), new \OC_Defaults(),
+				\OC::$server->getTimeFactory(), \OC::$server->getL10N('settings')
+			)
 		)));
 	$application->add(new OC\Core\Command\User\Delete(\OC::$server->getUserManager()));
 	$application->add(new OC\Core\Command\User\Disable(\OC::$server->getUserManager()));
