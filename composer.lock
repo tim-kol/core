@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0a1d34647ff8a9758f872117171dcc78",
+    "content-hash": "d1b0ef3d921aa896d84d1394254e8cd7",
     "packages": [
         {
             "name": "bantu/ini-get-wrapper",
@@ -1810,16 +1810,16 @@
         },
         {
             "name": "sabre/dav",
-            "version": "4.0.0-alpha2",
+            "version": "4.0.0-alpha3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sabre-io/dav.git",
-                "reference": "41b8fc35196e260f976034699cf210da2c04cfda"
+                "reference": "538819cd9915c7b7c2e1cda32211144b664da3cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sabre-io/dav/zipball/41b8fc35196e260f976034699cf210da2c04cfda",
-                "reference": "41b8fc35196e260f976034699cf210da2c04cfda",
+                "url": "https://api.github.com/repos/sabre-io/dav/zipball/538819cd9915c7b7c2e1cda32211144b664da3cb",
+                "reference": "538819cd9915c7b7c2e1cda32211144b664da3cb",
                 "shasum": ""
             },
             "require": {
@@ -1836,7 +1836,7 @@
                 "php": ">=7.0.0",
                 "psr/log": "^1.0",
                 "sabre/event": "^5.0",
-                "sabre/http": "dev-master",
+                "sabre/http": "^5.0",
                 "sabre/uri": "^2.0",
                 "sabre/vobject": "^4.2.0-alpha1",
                 "sabre/xml": "^2.0.0"
@@ -1885,7 +1885,7 @@
                 "framework",
                 "iCalendar"
             ],
-            "time": "2018-09-27T14:26:16+00:00"
+            "time": "2018-10-05T09:36:51+00:00"
         },
         {
             "name": "sabre/event",
@@ -1949,16 +1949,16 @@
         },
         {
             "name": "sabre/http",
-            "version": "dev-master",
+            "version": "5.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sabre-io/http.git",
-                "reference": "95df72bfcdf3adc677b370ece7c2cf4fca250bc6"
+                "reference": "f91c7d4437dcbc6f89c8b64e855e1544f4b60250"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sabre-io/http/zipball/95df72bfcdf3adc677b370ece7c2cf4fca250bc6",
-                "reference": "95df72bfcdf3adc677b370ece7c2cf4fca250bc6",
+                "url": "https://api.github.com/repos/sabre-io/http/zipball/f91c7d4437dcbc6f89c8b64e855e1544f4b60250",
+                "reference": "f91c7d4437dcbc6f89c8b64e855e1544f4b60250",
                 "shasum": ""
             },
             "require": {
@@ -2001,7 +2001,7 @@
             "keywords": [
                 "http"
             ],
-            "time": "2018-09-27T15:56:34+00:00"
+            "time": "2018-06-04T21:27:19+00:00"
         },
         {
             "name": "sabre/uri",
@@ -5255,11 +5255,6 @@
         {
             "name": "roave/security-advisories",
             "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "67643fa62d521fb76855b0a4cc9a3de7ba38f85b"
-            },
             "conflict": {
                 "3f/pygmentize": "<1.2",
                 "adodb/adodb-php": "<5.20.12",
