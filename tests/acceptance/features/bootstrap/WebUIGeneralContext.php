@@ -640,6 +640,9 @@ class WebUIGeneralContext extends RawMinkContext implements Context {
 				);
 			}
 		}
+		SetupHelper::runOcc(
+			['config:app:set files_sharing blacklisted_receiver_groups --value=']
+		);
 	}
 
 	/**
@@ -808,5 +811,8 @@ class WebUIGeneralContext extends RawMinkContext implements Context {
 		} else {
 			\error_log("SCENARIO RESULT: ($passOrFail)");
 		}
+		SetupHelper::runOcc(
+			["config:app:set files_sharing blacklisted_receiver_groups --value"]
+		);
 	}
 }

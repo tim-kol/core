@@ -216,7 +216,21 @@ class WebUIAdminSharingSettingsContext extends RawMinkContext implements Context
 			$this->getSession()
 		);
 	}
-	
+
+	/**
+	 * @When the administrator adds the group :group to the group sharing blacklist using the webUI
+	 *
+	 * @param string $group
+	 *
+	 * @return void
+	 */
+	public function theAdministratorAddsTheGroupToTheGroupSharingBlacklistUsingTheWebui($group) {
+		$this->adminSharingSettingsPage->addGroupToGroupSharingBlacklist($group);
+		$this->adminSharingSettingsPage->waitForAjaxCallsToStartAndFinish(
+			$this->getSession()
+		);
+	}
+
 	/**
 	 * This will run before EVERY scenario.
 	 * It will set the properties for this object.
